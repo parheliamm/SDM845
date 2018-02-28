@@ -38,6 +38,7 @@
 #include <linux/bitops.h>
 #include <linux/init_task.h>
 #include <asm/uaccess.h>
+#include <linux/build_bug.h>
 
 #include "internal.h"
 #include "mount.h"
@@ -129,6 +130,7 @@ getname_flags(const char __user *filename, int flags, int *empty)
 	struct filename *result;
 	char *kname;
 	int len;
+	BUILD_BUG_ON(offsetof(struct filename, iname) % sizeof(long) != 0);
 
 	result = audit_reusename(filename);
 	if (result)
