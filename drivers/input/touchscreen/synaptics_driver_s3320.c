@@ -194,7 +194,7 @@ static int gesture_switch = 0;
 #endif
 
 /*********************for Debug LOG switch*******************/
-#define TPD_ERR(a, arg...)  pr_err(TPD_DEVICE ": " a, ##arg)
+#define TPD_ERR(a, arg...)  pr_debug(TPD_DEVICE ": " a, ##arg)
 #define TPDTM_DMESG(a, arg...)  printk(TPD_DEVICE ": " a, ##arg)
 
 #define TPD_DEBUG(a,arg...)\
@@ -207,7 +207,7 @@ static int gesture_switch = 0;
 static int baseline_ret = 0;
 static long int TP_FW;
 static int tp_dev = 6;
-unsigned int tp_debug;
+unsigned int tp_debug = 0;
 static int button_map[3];
 static int tx_rx_num[2];
 static int16_t Rxdata[33][33];/*s3706 tx rx 16 33 s3508 tx rx 15 30*/

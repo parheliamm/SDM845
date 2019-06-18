@@ -22,11 +22,11 @@
 #include <linux/debugfs.h>
 #include "max98927.h"
 
-//#undef pr_info
-//#define pr_info pr_err
+#undef pr_info
+#define pr_info pr_debug
 
-//#undef pr_debug
-//#define pr_debug pr_err
+#undef pr_err
+#define pr_err pr_debug
 
 //suzhiguang
 int smartpa_present = 0;
