@@ -408,7 +408,7 @@ KBUILD_LDFLAGS_MODULE := -T $(srctree)/scripts/module-common.lds
 GCC_PLUGINS_CFLAGS :=
 
 ifneq ($(cc-name),clang)
-KBUILD_CFLAGS += -march=armv8.2-a
+KBUILD_CFLAGS += -march=armv8.2-a -mcpu=cortex-a75.cortex-a55
 endif
 
 # Read KERNELRELEASE from include/config/kernel.release (if it exists)
