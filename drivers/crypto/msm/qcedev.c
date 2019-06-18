@@ -674,7 +674,7 @@ static int qcedev_sha_update_max_xfer(struct qcedev_async_req *qcedev_areq,
 
 		i = 0;
 
-		k_src = &handle->sha_ctxt.trailing_buf[t_buf];
+		k_src = handle->sha_ctxt.trailing_buf + t_buf;
 
 		/* Copy data from user src(s) */
 		while (len > 0) {
