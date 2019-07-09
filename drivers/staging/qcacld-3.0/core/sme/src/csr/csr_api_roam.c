@@ -13128,9 +13128,11 @@ static QDF_STATUS csr_roam_start_wait_for_key_timer(tpAniSirGlobal pMac,
 							uint32_t interval)
 {
 	QDF_STATUS status;
+#ifdef WLAN_DEBUG
 	tpCsrNeighborRoamControlInfo pNeighborRoamInfo =
 		&pMac->roam.neighborRoamInfo[pMac->roam.WaitForKeyTimerInfo.
 					     sessionId];
+#endif
 	if (csr_neighbor_roam_is_handoff_in_progress(pMac,
 				     pMac->roam.WaitForKeyTimerInfo.
 				     sessionId)) {
@@ -13152,10 +13154,11 @@ static QDF_STATUS csr_roam_start_wait_for_key_timer(tpAniSirGlobal pMac,
 
 QDF_STATUS csr_roam_stop_wait_for_key_timer(tpAniSirGlobal pMac)
 {
+#ifdef WLAN_DEBUG
 	tpCsrNeighborRoamControlInfo pNeighborRoamInfo =
 		&pMac->roam.neighborRoamInfo[pMac->roam.WaitForKeyTimerInfo.
 					     sessionId];
-
+#endif
 	sme_debug("WaitForKey timer stopped in state: %s sub-state: %s",
 		mac_trace_get_neighbour_roam_state(pNeighborRoamInfo->
 						   neighborRoamState),

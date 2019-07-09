@@ -1174,9 +1174,10 @@ static void ol_txrx_stats_display_tso(ol_txrx_pdev_handle pdev)
 		     ((seg_idx < TXRX_STATS_TSO_MSDU_NUM_SEG(pdev, msdu_idx)) &&
 		     (seg_idx < NUM_MAX_TSO_SEGS));
 			 seg_idx++) {
+#ifdef tso_seg
 			struct qdf_tso_seg_t tso_seg =
 				 TXRX_STATS_TSO_SEG(pdev, msdu_idx, seg_idx);
-
+#endif
 			QDF_TRACE(QDF_MODULE_ID_TXRX, QDF_TRACE_LEVEL_INFO_LOW,
 				 "seg idx: %d", seg_idx);
 			QDF_TRACE(QDF_MODULE_ID_TXRX, QDF_TRACE_LEVEL_INFO_LOW,
@@ -2271,8 +2272,9 @@ static void ol_txrx_debugfs_exit(ol_txrx_pdev_handle pdev)
 void ol_txrx_pdev_detach(ol_txrx_pdev_handle pdev)
 {
 	struct ol_txrx_stats_req_internal *req, *temp_req;
+#ifdef WLAN_DEBUG
 	int i = 0;
-
+#endif
 	/*checking to ensure txrx pdev structure is not NULL */
 	if (!pdev) {
 		ol_txrx_err(
@@ -3828,8 +3830,9 @@ QDF_STATUS ol_txrx_clear_peer(uint8_t sta_id)
  */
 void peer_unmap_timer_handler(unsigned long data)
 {
+#ifdef WLAN_DEBUG
 	ol_txrx_peer_handle peer = (ol_txrx_peer_handle)data;
-
+#endif
 	WMA_LOGE("%s: all unmap events not received for peer %pK, ref_cnt %d",
 		 __func__, peer, qdf_atomic_read(&peer->ref_cnt));
 	WMA_LOGE("%s: peer %pK (%02x:%02x:%02x:%02x:%02x:%02x)",
@@ -4795,12 +4798,13 @@ static void ol_txrx_disp_peer_stats(ol_txrx_pdev_handle pdev)
 void ol_txrx_stats_display(ol_txrx_pdev_handle pdev,
 				enum qdf_stats_verb_lvl level)
 {
+#ifdef WLAN_DEBUG
 	uint64_t tx_dropped =
 		pdev->stats.pub.tx.dropped.download_fail.pkts
 		  + pdev->stats.pub.tx.dropped.target_discard.pkts
 		  + pdev->stats.pub.tx.dropped.no_ack.pkts
 		  + pdev->stats.pub.tx.dropped.others.pkts;
-
+#endif
 	if (level == QDF_STATS_VERB_LVL_LOW) {
 		QDF_TRACE(QDF_MODULE_ID_TXRX, QDF_TRACE_LEVEL_INFO_LOW,
 			"STATS |TX: %lld(%lldb) tso %lld ok %lld drops(%u-%lld %u-%lld %u-%lld ?-%lld hR-%lld)|RX: %lld(%lldb) drops(E %lld PI %lld ME %lld) fwd(S %d F %d SF %d)|",

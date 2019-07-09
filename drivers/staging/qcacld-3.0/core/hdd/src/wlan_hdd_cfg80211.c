@@ -18942,6 +18942,7 @@ disconnected:
 	return result;
 }
 
+#ifdef WLAN_DEBUG
 /**
  * hdd_ieee80211_reason_code_to_str() - return string conversion of reason code
  * @reason: ieee80211 reason code.
@@ -19005,6 +19006,7 @@ static const char *hdd_ieee80211_reason_code_to_str(uint16_t reason)
 		return "Unknown";
 	}
 }
+#endif
 
 /**
  * hdd_print_netdev_txq_status() - print netdev tx queue status
@@ -19022,8 +19024,9 @@ static void hdd_print_netdev_txq_status(struct net_device *dev)
 		return;
 
 	for (i = 0; i < dev->num_tx_queues; i++) {
+#ifdef WLAN_DEBUG
 		struct netdev_queue *txq = netdev_get_tx_queue(dev, i);
-
+#endif
 		hdd_info("netdev tx queue[%u] state: 0x%lx", i, txq->state);
 	}
 }

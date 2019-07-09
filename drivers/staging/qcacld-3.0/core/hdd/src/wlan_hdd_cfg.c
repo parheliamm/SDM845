@@ -6789,7 +6789,9 @@ static void hdd_cfg_print_mws_coex(hdd_context_t *hdd_ctx)
  */
 static void hdd_cfg_print_action_oui(hdd_context_t *hdd_ctx)
 {
+#ifdef WLAN_DEBUG
 	struct hdd_config *config = hdd_ctx->config;
+#endif
 
 	hdd_debug("Name = [%s] value = [%u]",
 		CFG_ENABLE_ACTION_OUI,
@@ -9199,6 +9201,7 @@ static bool hdd_string_to_hex(uint8_t *token, uint8_t *hex_str,
 	return true;
 }
 
+#ifdef WLAN_DEBUG
 /**
  * hdd_action_oui_token_string() - converts enum value to string
  * token_id: enum value to be converted to string
@@ -9225,6 +9228,7 @@ uint8_t *hdd_action_oui_token_string(enum hdd_action_oui_token_type token_id)
 
 	return (uint8_t *) "UNKNOWN";
 }
+#endif
 
 /**
  * hdd_validate_and_convert_oui() - validate and convert OUI str to hex array

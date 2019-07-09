@@ -6848,7 +6848,9 @@ bool csr_scan_remove_fresh_scan_command(tpAniSirGlobal pMac, uint8_t sessionId)
 void csr_release_scan_command(tpAniSirGlobal pMac, tSmeCmd *pCommand,
 			      eCsrScanStatus scanStatus)
 {
+#ifdef WLAN_DEBUG
 	eCsrScanReason reason = pCommand->u.scanCmd.reason;
+#endif
 	bool status;
 	tDblLinkList *cmd_list = NULL;
 

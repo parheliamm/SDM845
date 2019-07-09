@@ -49,7 +49,7 @@
 /* Ms to Time Unit Micro Sec */
 #define MS_TO_TU_MUS(x)   ((x) * 1024)
 #define MAX_MUS_VAL       (INT_MAX / 1024)
-
+#ifdef WLAN_DEBUG
 static uint8_t *hdd_get_action_string(uint16_t MsgType)
 {
 	switch (MsgType) {
@@ -74,6 +74,7 @@ static uint8_t *hdd_get_action_string(uint16_t MsgType)
 		return "UNKNOWN";
 	}
 }
+#endif
 
 #ifdef WLAN_FEATURE_P2P_DEBUG
 #define MAX_P2P_ACTION_FRAME_TYPE 9

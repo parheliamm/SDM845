@@ -6001,6 +6001,7 @@ void wma_peer_debug_log(uint8_t vdev_id, uint8_t op,
 	rec->arg2 = arg2;
 }
 
+#ifdef WLAN_DEBUG
 /**
  * wma_peer_debug_string() - convert operation value to printable string
  * @op: operation identifier
@@ -6046,6 +6047,7 @@ static char *wma_peer_debug_string(uint32_t op)
 		return "unknown";
 	}
 }
+#endif
 
 /**
  * wma_peer_debug_dump() - Print the peer debug log records
