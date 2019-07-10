@@ -399,6 +399,8 @@ csr_neighbor_roam_prepare_scan_profile_filter(tpAniSirGlobal pMac,
 				pScanFilter->SSIDs.numOfSSIDs);
 		if (NULL == pScanFilter->SSIDs.SSIDList) {
 			sme_err("Scan Filter SSID mem alloc failed");
+			qdf_mem_free(pScanFilter->BSSIDs.bssid);
+			pScanFilter->BSSIDs.bssid = NULL;
 			return QDF_STATUS_E_NOMEM;
 		}
 		for (i = 0; i < roam_params->num_ssid_allowed_list; i++) {
@@ -418,6 +420,8 @@ csr_neighbor_roam_prepare_scan_profile_filter(tpAniSirGlobal pMac,
 			qdf_mem_malloc(sizeof(tCsrSSIDInfo));
 		if (NULL == pScanFilter->SSIDs.SSIDList) {
 			sme_err("Scan Filter SSID mem alloc failed");
+			qdf_mem_free(pScanFilter->BSSIDs.bssid);
+			pScanFilter->BSSIDs.bssid = NULL;
 			return QDF_STATUS_E_NOMEM;
 		}
 		pScanFilter->SSIDs.SSIDList->handoffPermitted = 1;
@@ -458,6 +462,8 @@ csr_neighbor_roam_prepare_scan_profile_filter(tpAniSirGlobal pMac,
 			qdf_mem_malloc(num_ch * sizeof(uint8_t));
 		if (NULL == pScanFilter->ChannelInfo.ChannelList) {
 			sme_err("Scan Filter Ch list mem alloc failed");
+			qdf_mem_free(pScanFilter->BSSIDs.bssid);
+			pScanFilter->BSSIDs.bssid = NULL;
 			qdf_mem_free(pScanFilter->SSIDs.SSIDList);
 			pScanFilter->SSIDs.SSIDList = NULL;
 			return QDF_STATUS_E_NOMEM;
