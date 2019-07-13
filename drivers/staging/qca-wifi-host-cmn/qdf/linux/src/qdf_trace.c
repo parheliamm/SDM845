@@ -1691,8 +1691,8 @@ void qdf_dp_display_mgmt_pkt(struct qdf_dp_trace_record_s *record,
 {
 	int loc;
 	char prepend_str[QDF_DP_TRACE_PREPEND_STR_SIZE];
-	struct qdf_dp_trace_mgmt_buf *buf =
-		(struct qdf_dp_trace_mgmt_buf *)record->data;
+	//struct qdf_dp_trace_mgmt_buf *buf =
+	//	(struct qdf_dp_trace_mgmt_buf *)record->data;
 
 	loc = qdf_dp_trace_fill_meta_str(prepend_str, sizeof(prepend_str),
 					 index, info, record);
@@ -1745,8 +1745,8 @@ void qdf_dp_display_event_record(struct qdf_dp_trace_record_s *record,
 			      uint16_t index, u8 info)
 {
 	char prepend_str[QDF_DP_TRACE_PREPEND_STR_SIZE];
-	struct qdf_dp_trace_event_buf *buf =
-		(struct qdf_dp_trace_event_buf *)record->data;
+	//struct qdf_dp_trace_event_buf *buf =
+	//	(struct qdf_dp_trace_event_buf *)record->data;
 
 	qdf_dp_trace_fill_meta_str(prepend_str, sizeof(prepend_str),
 				   index, info, record);
@@ -1800,8 +1800,8 @@ void qdf_dp_display_proto_pkt(struct qdf_dp_trace_record_s *record,
 {
 	int loc;
 	char prepend_str[QDF_DP_TRACE_PREPEND_STR_SIZE];
-	struct qdf_dp_trace_proto_buf *buf =
-		(struct qdf_dp_trace_proto_buf *)record->data;
+	//struct qdf_dp_trace_proto_buf *buf =
+	//	(struct qdf_dp_trace_proto_buf *)record->data;
 
 	loc = qdf_dp_trace_fill_meta_str(prepend_str, sizeof(prepend_str),
 					 index, info, record);

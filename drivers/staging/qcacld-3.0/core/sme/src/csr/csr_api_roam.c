@@ -7212,8 +7212,8 @@ static void csr_roam_process_start_bss_success(tpAniSirGlobal mac_ctx,
 	tDot11fBeaconIEs *ies_ptr = NULL;
 	tSirMacAddr bcast_mac = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff };
 	QDF_STATUS status;
-	host_log_ibss_pkt_type *ibss_log;
-	uint32_t bi;
+	//host_log_ibss_pkt_type *ibss_log;
+	//uint32_t bi;
 	eCsrEncryptionType encr_type;
 #ifdef FEATURE_WLAN_MCC_TO_SCC_SWITCH
 	tSirSmeHTProfile *src_profile = NULL;
@@ -7984,7 +7984,7 @@ static bool csr_roam_process_results(tpAniSirGlobal mac_ctx, tSmeCmd *cmd,
 	tCsrRoamProfile *profile = &cmd->u.roamCmd.roamProfile;
 	eRoamCmdStatus roam_status;
 	eCsrRoamResult roam_result;
-	host_log_ibss_pkt_type *ibss_log;
+	//host_log_ibss_pkt_type *ibss_log;
 	tSirSmeStartBssRsp  *start_bss_rsp = NULL;
 
 	if (!session) {

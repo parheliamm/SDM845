@@ -408,7 +408,7 @@ KBUILD_LDFLAGS_MODULE := -T $(srctree)/scripts/module-common.lds
 GCC_PLUGINS_CFLAGS :=
 
 ifneq ($(cc-name),clang)
-KBUILD_CFLAGS += -march=armv8.2-a -mcpu=cortex-a75.cortex-a55
+KBUILD_CFLAGS += -march=armv8.2-a -mcpu=cortex-a75.cortex-a55 -Wno-misleading-indentation
 endif
 
 ifeq ($(call clang-ifversion, -ge, 0700, y), y)
